@@ -1,0 +1,3 @@
+rootProject.name = 'idata230x-assignments'
+
+include ':week2:idata2306'
