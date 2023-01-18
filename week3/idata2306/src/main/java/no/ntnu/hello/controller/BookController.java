@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import no.ntnu.hello.dto.CreateBookRequest;
 import no.ntnu.hello.dto.UpdateBookRequest;
+import no.ntnu.hello.exception.model.NotFoundException;
 import no.ntnu.hello.model.Book;
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
   private List<Book> books;
+
+  private static final String BOOK_NOT_FOUND_MESSAGE = "Could not find a book with id: ";
 
   public BookController() {
     this.books = new ArrayList<>();
@@ -58,7 +61,7 @@ public class BookController {
       .filter(book -> book.id() == id)
       .findFirst();
 
-    if (foundBook.isEmpty()) return ResponseEntity.notFound().build();
+    if (foundBook.isEmpty()) throw new NotFoundException(BOOK_NOT_FOUND_MESSAGE + id);
 
     return ResponseEntity.ok(foundBook.get());
   }
@@ -82,7 +85,7 @@ public class BookController {
   ) {
     boolean oldBookRemoved = this.books.removeIf(oldBook -> oldBook.id() == id);
     
-    if (!oldBookRemoved) return ResponseEntity.notFound().build();
+    if (!oldBookRemoved) throw new NotFoundException(BOOK_NOT_FOUND_MESSAGE + id);
     
     var updatedBook = new Book(id, book.title(), book.year(), book.numberOfPages());
     this.books.add(updatedBook);
@@ -94,7 +97,7 @@ public class BookController {
   public ResponseEntity<Object> deleteBook(@PathVariable int id) {
     boolean bookRemoved = this.books.removeIf(book -> book.id() == id);
 
-    if (!bookRemoved) return ResponseEntity.notFound().build();
+    if (!bookRemoved) throw new NotFoundException(BOOK_NOT_FOUND_MESSAGE + id);
 
     return ResponseEntity.noContent().build();
   }
