@@ -3,7 +3,6 @@ package no.ntnu.hello.controller;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,10 +37,14 @@ public class BookController {
     this.books.add(new Book(10, "The Lays of Beleriand", 1985, 416));
   }
 
-  private Optional<Book> getLastBook() {
-    if (this.books.isEmpty()) return Optional.empty();
+  private int getHighestId() {
+    var highestId = 0;
 
-    return Optional.of(this.books.get(this.books.size() - 1));
+    for (var book : this.books) {
+      if (book.id() > highestId) highestId = book.id();
+    }
+
+    return highestId;
   }
 
   @GetMapping
@@ -64,8 +67,7 @@ public class BookController {
   public ResponseEntity<Book> createBook(@RequestBody CreateBookRequest book) {
     if (book.title() == null) return ResponseEntity.badRequest().build();
     
-    var lastBook = this.getLastBook();
-    var newBookId = lastBook.isPresent() ? lastBook.get().id() + 1 : 1;
+    var newBookId = this.getHighestId() + 1;
     var newBook = new Book(newBookId, book.title(), book.year(), book.numberOfPages());
 
     this.books.add(newBook);
