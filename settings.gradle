@@ -1,3 +1,4 @@
 rootProject.name = 'idata230x-assignments'
 
 include ':week2:idata2306'
+include ':week3:idata2306'
