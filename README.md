@@ -6,7 +6,9 @@
 ## IDATA2301 Web Technology
 
 - [Week 2](week2/idata2301/)
+- ~~Week 3~~ (no coding assignment)
 
 ## IDATA2306 Application Development
 
 - [Week 2](week2/idata2306/)
+- [Week 3](week3/idata2306/)
