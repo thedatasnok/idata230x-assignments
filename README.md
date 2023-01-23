@@ -7,6 +7,7 @@
 
 - [Week 2](week2/idata2301/)
 - ~~Week 3~~ (no coding assignment)
+- [Week 4](week4/idata2301/)
 
 ## IDATA2306 Application Development
 
