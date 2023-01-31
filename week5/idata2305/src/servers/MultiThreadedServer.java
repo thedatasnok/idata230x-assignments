@@ -27,10 +27,7 @@ public class MultiThreadedServer implements Runnable {
         var clientSocket = this.serverSocket.accept();
         
         new Thread(
-          new AsyncSearchSimulator(
-            clientSocket, 
-            "Multithreaded Server"
-          )
+          new AsyncSearchSimulator(clientSocket)
         ).start();
 
       } catch (Exception e) {
