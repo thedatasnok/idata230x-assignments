@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    <h1>Checkout</h1>
+
+    <form action="http://webtek.datakomm.work:8080/checkout" method="post">
+      <p>
+        Product: Learning Web Design, 5th Edition
+
+        <input
+          type="text"
+          name="productTitle"
+          id="productTitle"
+          hidden="true"
+          value="Learning Web Design, 5th Edition"
+        />
+      </p>
+
+      <input
+        type="number"
+        name="productPrice"
+        id="productPrice"
+        hidden="true"
+        value="440"
+      />
+      <p>Enter necessary details below.</p>
+
+      <p>
+        Your name:
+        <input type="text" name="name" id="name" />
+      </p>
+      <p>
+        Your address:
+        <input type="text" name="address" id="address" />
+      </p>
+      <p>
+        Email:
+        <input type="text" name="email" id="email" />
+      </p>
+
+      <textarea
+        name="comment"
+        id="comment"
+        cols="40"
+        rows="5"
+        placeholder="Your comments here"
+      ></textarea>
+
+      <br />
+
+      <button type="submit">Place order</button>
+    </form>
+  </body>
+</html>
