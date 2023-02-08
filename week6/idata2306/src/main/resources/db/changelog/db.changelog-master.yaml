@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0
+      author: thedatasnok
+      changes:
+      - sqlFile: 
+          path: changelog/1.0.0/add-author-table.sql
+          relativeToChangeLogFile: true
+      - sqlFile: 
+          path: changelog/1.0.0/add-book-table.sql
+          relativeToChangeLogFile: true
+      - sqlFile: 
+          path: changelog/1.0.0/add-book-tag-table.sql
+          relativeToChangelogFile: true
+      - sqlFile: 
+          path: changelog/1.0.0/populate-data.sql
+          relativeToChangeLogFile: true

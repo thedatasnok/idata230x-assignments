@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "65b12c7a-0849-4423-b16d-61df51cf0603",
+		"name": "Exercise 5.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1: GET all books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const books = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Responds with an array\", () => pm.expect(Array.isArray(books)).to.eql(true));\r",
+							"\r",
+							"pm.environment.set('INITIAL_BOOK_COUNT', books.length);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2: GET non-existant book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Responds with Status Code 404\", () => {\r",
+							"    pm.expect(pm.response.code).to.eql(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/37128",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"37128"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3: POST a new book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Responds with Status Code 201\", () => pm.expect(pm.response.code).to.eql(201));\r",
+							"\r",
+							"const { id } = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Responds with a non-zero ID\", () => pm.expect(id).to.gt(0))\r",
+							"\r",
+							"pm.environment.set('CREATED_BOOK_ID', id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Learning Web Design, 5th edition\",\r\n    \"year\": 2018,\r\n    \"numberOfPages\": 736\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1: GET all books again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const books = pm.response.json();\r",
+							"const initialCount = pm.environment.get('INITIAL_BOOK_COUNT');\r",
+							"\r",
+							"pm.test(\"Books incremented by one\", () => pm.expect(books.length).to.eql(initialCount + 1))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2: GET the new book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"New book uses content from creation request\", () => {\r",
+							"    const { title, year, numberOfPages } = pm.response.json();\r",
+							"\r",
+							"    pm.expect(title).to.eql(\"Learning Web Design, 5th edition\");\r",
+							"    pm.expect(year).to.eql(2018);\r",
+							"    pm.expect(numberOfPages).to.eql(736);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{CREATED_BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{CREATED_BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3: DELETE newly created book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Responds with Status Code 204\", () => pm.expect(pm.response.code).to.eql(204))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{CREATED_BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{CREATED_BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4: GET the deleted book again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Responds with Status Code 404\", () => pm.expect(pm.response.code).to.eql(404));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/{{CREATED_BOOK_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"{{CREATED_BOOK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.5: GET all books again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const books = pm.response.json();\r",
+							"const initialCount = pm.environment.get('INITIAL_BOOK_COUNT');\r",
+							"\r",
+							"pm.test(\"Collection size is equal to the initial count\", () => pm.expect(books.length).to.eq(initialCount));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4: DELETE non-existant book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Responds with Status Code 404\", () => pm.expect(pm.response.code).to.eql(404));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/32178321",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"32178321"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
