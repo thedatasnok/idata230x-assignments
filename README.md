@@ -10,6 +10,7 @@
 - [Week 4](week4/idata2301/)
 - ~~Week 5~~ (no coding assignment)
 - [Week 6](week6/idata2301/)
+- [Week 7](week7/idata2301/)
 
 ## IDATA2306 Application Development
 
@@ -22,4 +23,4 @@
 ## IDATA2305 Operating Systems
 
 - [Week 5: Assignment 1](week5/idata2305/)
-
+- [Week 7: Assignment 2](week7/idata2305/)
