@@ -1,0 +1,49 @@
+html {
+  font-family: "Ubuntu", sans-serif;
+  /* background-repeat: no-repeat; */
+  margin: 0;
+  height: 100vh;
+  background: rgb(186, 118, 0);
+  background: radial-gradient(
+    at 10% 10%,
+    rgba(186, 118, 0, 1) 0%,
+    rgba(238, 160, 0, 1) 5%,
+    rgba(139, 100, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 20%
+  );
+}
+
+body {
+  margin: 0 20%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#heading {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+}
+
+#heading > h1 {
+  font-size: 3rem;
+  width: 50%;
+  text-align: right;
+}
+
+#globe-container {
+  background-image: url("https://github.com/strazdinsg/web-examples/blob/main/public_html/exercises/ex07.3-colors-gradient-bgimage/globe.jpg?raw=true");
+  background-size: cover;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+#content > h2 {
+  font-size: 2rem;
+}
