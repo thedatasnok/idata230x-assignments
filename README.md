@@ -19,6 +19,7 @@
 - ~~Week 4~~ (no coding assignment)
 - [Week 5](week5/idata2306/)
 - [Week 6](week6/idata2306/)
+- [Week 7](week7/idata2306/)
 
 ## IDATA2305 Operating Systems
 
