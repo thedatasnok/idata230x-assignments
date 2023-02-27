@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 9.6</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        // 1 rem = 16px
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      #brick-wall-grid {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: #808080;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .brick {
+        background-color: #b22222;
+        border: 1px solid black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      #brick3 {
+        order: 1;
+        grid-column: span 2;
+      }
+
+      #brick2 {
+        order: 2;
+      }
+
+      #brick4 {
+        order: 3;
+      }
+
+      #brick6 {
+        order: 4;
+        grid-column: span 2;
+      }
+
+      #brick5 {
+        order: 5;
+        grid-column: span 2;
+      }
+
+      #brick1 {
+        order: 6;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="brick-wall-grid">
+      <div class="brick" id="brick1">!</div>
+      <div class="brick" id="brick2">lo</div>
+      <div class="brick" id="brick3">Hel</div>
+      <div class="brick" id="brick4">W</div>
+      <div class="brick" id="brick5">ld</div>
+      <div class="brick" id="brick6">or</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 9.4</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        // 1 rem = 16px
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 4rem 2fr 4rem;
+      }
+
+      header {
+        background-color: aquamarine;
+        grid-column: span 3;
+      }
+
+      .centered-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      aside,
+      nav {
+        background-color: lightcoral;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-top: 2px dashed black;
+        border-bottom: 2px dashed black;
+      }
+
+      nav {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      aside > div,
+      nav > div {
+        display: flex;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid black;
+        align-items: center;
+        justify-content: center;
+      }
+
+      main {
+        flex: 1 1 0%;
+        display: flex;
+        background-color: azure;
+        border: 2px dashed black;
+        padding: 1rem;
+      }
+
+      footer {
+        background-color: aquamarine;
+        grid-column: span 3;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="centered-content">
+      <h1>Welcome to a demo of the holy grail layout using CSS grid!</h1>
+    </header>
+
+    <main>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minima est
+      illum, vitae pariatur laudantium quaerat maxime quia recusandae,
+      voluptatibus maiores corporis ea velit laboriosam sequi nostrum obcaecati
+      quisquam fugit?
+    </main>
+
+    <nav>
+      <div>Home</div>
+      <div>Gallery</div>
+      <div>About us</div>
+      <div>Contacts</div>
+    </nav>
+
+    <aside aria-label="ads">
+      <div>Ad 1</div>
+      <div>Ad 2</div>
+      <div>Ad 3</div>
+    </aside>
+
+    <footer class="centered-content">Copyleftright 2032</footer>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 9.5</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        // 1 rem = 16px
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .grid {
+        display: grid;
+        height: calc(100vh - 1rem);
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: 200px 1fr 100px;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        border: 2px dashed lightblue;
+        margin: 0.5rem;
+      }
+
+      .grid-item {
+        border: 1px solid black;
+        padding: 0.5rem;
+        background-color: lightblue;
+        min-height: 6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="grid-item">Item 1</div>
+      <div class="grid-item">Item 2</div>
+      <div class="grid-item">Item 3</div>
+      <div class="grid-item">Item 4</div>
+      <div class="grid-item">Item 5</div>
+      <div class="grid-item">Item 6</div>
+    </div>
+  </body>
+</html>

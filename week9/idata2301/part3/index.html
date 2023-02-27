@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 9.4</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        // 1 rem = 16px
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        height: 10%;
+        background-color: aquamarine;
+      }
+
+      .centered-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page-content {
+        flex: 1 1 0%;
+        display: flex;
+      }
+
+      aside,
+      nav {
+        background-color: lightcoral;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-top: 2px dashed black;
+        border-bottom: 2px dashed black;
+      }
+
+      aside > div,
+      nav > div {
+        display: flex;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid black;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav {
+        order: -1;
+      }
+
+      main {
+        flex: 1 1 0%;
+        display: flex;
+        background-color: azure;
+        border: 2px dashed black;
+        padding: 1rem;
+      }
+
+      footer {
+        height: 10%;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="centered-content">
+      <h1>
+        Welcome to a demo of the holy grail layout using flexbox CSS features!
+      </h1>
+    </header>
+
+    <div class="page-content">
+      <main>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minima
+        est illum, vitae pariatur laudantium quaerat maxime quia recusandae,
+        voluptatibus maiores corporis ea velit laboriosam sequi nostrum
+        obcaecati quisquam fugit?
+      </main>
+      <nav>
+        <div>Home</div>
+        <div>Gallery</div>
+        <div>About us</div>
+        <div>Contacts</div>
+      </nav>
+      <aside aria-label="ads">
+        <div>Ad 1</div>
+        <div>Ad 2</div>
+        <div>Ad 3</div>
+      </aside>
+    </div>
+
+    <footer class="centered-content">Copyleftright 2032</footer>
+  </body>
+</html>
