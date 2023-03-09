@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex10.5</title>
+    <script src="ttt.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        margin-top: 1rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 25%;
+        border: 1px solid black;
+        margin: 0.5rem;
+        align-content: center;
+        justify-content: center;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .grid > :nth-child(n) {
+        border: 1px solid black;
+      }
+
+      #reset {
+        padding: 1rem;
+        border: 1.5px solid black;
+        border-radius: 0.5rem;
+        background: white;
+        cursor: pointer;
+        margin-bottom: 1rem;
+      }
+
+      .grid > div {
+        aspect-ratio: 1 / 1;
+        font-size: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .clicked {
+        background-color: #f4f4f4;
+        color: #3f3f3f;
+      }
+    </style>
+  </head>
+  <body onload="load()">
+    <p>Loading...</p>
+
+    <div>
+      <label for="a">a</label>
+      <input id="a" type="number" />
+    </div>
+
+    <div>
+      <label for="b" value="0">b</label>
+      <input id="b" type="number" value="0" />
+    </div>
+
+    <p id="result"></p>
+
+    <h1>tiktok toes</h1>
+
+    <p>player: <span id="turn-indicator"></span></p>
+
+    <div id="ttt-grid" class="grid">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <button id="reset">start over</button>
+
+    <select name="favorite-color" id="favorite-color">
+      <option value="#ff0000">Red</option>
+      <option value="#00ff00">Green</option>
+      <option value="#0000ff">Blue</option>
+      <option value="Roundhouse Kick">Roundhouse Kick</option>
+    </select>
+
+    <p>
+      I see that your favorite color is
+      <span id="favorite-color-indicator"></span>
+    </p>
+
+    <button id="hello-adder">add</button>
+    <button id="hello-remover">remove</button>
+
+    <div id="hello-container"></div>
+
+    <button id="magic-button">hei</button>
+  </body>
+</html>
